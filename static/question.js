@@ -29,8 +29,8 @@ function adjustFontSize(button) {
  * iOS and Android browsers need specific viewport handling
  */
 function adjustSizing() {
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-  const isAndroid = /Android/.test(navigator.userAgent);
+  const isIOS = /iPad|iPhone|iPod/.test(naigator.userAgent);
+  const isAndroid = /Android/.test(naigator.userAgent);
 
   if (isIOS) {
     document.body.style.height = "85vh";
