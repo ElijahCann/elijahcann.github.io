@@ -156,7 +156,7 @@ function hidePopup() {
 function isAnswerCorrect(button) {
   if (button.classList.contains("wrong")) {
     button.style.backgroundColor = "rgb(252, 43, 43)";
-    const failAudio = new Audio("static/fail.mp3");v            
+    const failAudio = new Audio("static/fail.mp3");
     failAudio.play();
   } else {
     button.style.backgroundColor = "rgb(38, 213, 96)";
