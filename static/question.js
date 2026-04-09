@@ -44,9 +44,9 @@ function adjustSizing() {
  * Preloads: fail sound, correct sound, click sound
  */
 function audio() {
-  new Audio("../static/fail.mp3").preload = "auto";
-  new Audio("../static/correct.mp3").preload = "auto";
-  new Audio("../static/click.mp3").preload = "auto";
+  new Audio("fail.mp3").preload = "auto";
+  new Audio("correct.mp3").preload = "auto";
+  new Audio("click.mp3").preload = "auto";
 }
 
 // ============================================================================
@@ -63,8 +63,8 @@ function createNoAudioButton(audioButton, blockOthers) {
   if (!audioButton) {
     return;
   }
-  audioButton.src = "/static/NoSpeaker.PNG";
-  let noAudio = new Audio("/static/NoAudio.mp3");
+  audioButton.src = "NoSpeaker.PNG";
+  let noAudio = new Audio("NoAudio.mp3");
   audioButton.addEventListener(
     "click",
     noWordAudio(noAudio, audioButton, blockOthers),
@@ -89,7 +89,7 @@ function generateText(words) {
     console.warn("Popup speaker button not found");
   } else if (words[0]["audio"] != null) {
     play = removeAllEventListeners(play);
-    play.src = "/static/speaker.PNG";
+    play.src = "speaker.PNG";
     let audio = new Audio(words[0]["audio"]);
     play.setAttribute("data-loading", "true");
     audio.addEventListener("canplay", () => {
@@ -156,11 +156,11 @@ function hidePopup() {
 function isAnswerCorrect(button) {
   if (button.classList.contains("wrong")) {
     button.style.backgroundColor = "rgb(252, 43, 43)";
-    const failAudio = new Audio("../static/fail.mp3");v            
+    const failAudio = new Audio("fail.mp3");v            
     failAudio.play();
   } else {
     button.style.backgroundColor = "rgb(38, 213, 96)";
-    const correctAudio = new Audio("../static/correct.mp3");
+    const correctAudio = new Audio("correct.mp3");
     correctAudio.play();
   }
 }
@@ -234,7 +234,7 @@ function noWordAudio(audio, audioButton, blockOthers) {
  */
 function onDictButtonClick() {
   for (let i = 0; i < 5; i++) {
-    const clickAudio = new Audio("../static/click.mp3");
+    const clickAudio = new Audio("click.mp3");
     const dictButton = document.querySelector(`#help${i}`);
     if (!dictButton) {
       continue;
@@ -300,7 +300,7 @@ function onDictButtonClick() {
  */
 function onExitButtonClick() {
   const exit = document.getElementById("exit");
-  const clickAudio = new Audio("../static/click.mp3");
+  const clickAudio = new Audio("click.mp3");
   exit.addEventListener("click", function (event) {
     // play audio
     clickAudio.play();
@@ -318,7 +318,7 @@ function onExitButtonClick() {
  */
 function onHomeButtonClick() {
   const home = document.querySelector("#home");
-  const clickAudio = new Audio("../static/click.mp3");
+  const clickAudio = new Audio("click.mp3");
 
   home.addEventListener("click", function (event) {
     if (!home.classList.contains("disabled")) {
@@ -338,7 +338,7 @@ function onHomeButtonClick() {
  */
 function onNextButtonClick() {
   const next = document.querySelector(`#next`);
-  const clickAudio = new Audio("../static/click.mp3");
+  const clickAudio = new Audio("click.mp3");
 
   next.addEventListener("click", function (event) {
     if (!next.classList.contains("disabled")) {
@@ -436,7 +436,7 @@ function onSpeakerButtonClick(target, words) {
         }
         if (audioSrc != null) {
           // Dictionary audio found: set speaker icon and attach audio handler
-          audioButton.src = "/static/speaker.PNG";
+          audioButton.src = "speaker.PNG";
           let audio = new Audio(audioSrc);
           audio.addEventListener("canplay", function () {
             // Audio is ready to play: remove loading state
@@ -458,7 +458,7 @@ function onSpeakerButtonClick(target, words) {
           );
         } else if (window.speechSynthesis) {
           // Fall back to speech synthesis
-          audioButton.src = "/static/speaker.PNG";
+          audioButton.src = "speaker.PNG";
           audioButton.removeAttribute("data-loading");
           audioButton.style.opacity = "1";
           audioButton.style.pointerEvents = "auto";
@@ -484,7 +484,7 @@ function onSpeakerButtonClick(target, words) {
       .catch((error) => {
         // Failed: check for speech synthesis
         if (window.speechSynthesis) {
-          audioButton.src = "/static/speaker.PNG";
+          audioButton.src = "speaker.PNG";
           audioButton.removeAttribute("data-loading");
           audioButton.style.opacity = "1";
           audioButton.style.pointerEvents = "auto";
@@ -554,7 +554,7 @@ function popupText(data, HTMLword) {
     if (play) {
       play = removeAllEventListeners(play);
       if (window.speechSynthesis) {
-        play.src = "/static/speaker.PNG";
+        play.src = "speaker.PNG";
         play.addEventListener("click", function (event) {
           event.stopPropagation();
           event.preventDefault();
