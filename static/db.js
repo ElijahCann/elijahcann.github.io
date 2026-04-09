@@ -4,9 +4,9 @@ export async function loadDB() {
   if (db.cueWords) return db;
 
   const [cw, close, loose] = await Promise.all([
-    fetch("data/CueWords.json").then(r=>r.json()),
-    fetch("data/CueCloseWords.json").then(r=>r.json()),
-    fetch("data/CueLooseWords.json").then(r=>r.json())
+    fetch("static/data/CueWords.json").then(r=>r.json()),
+    fetch("static/data/CueCloseWords.json").then(r=>r.json()),
+    fetch("static/data/CueLooseWords.json").then(r=>r.json())
   ]);
 
   db.cueWords = cw;
