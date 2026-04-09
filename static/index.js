@@ -6,7 +6,7 @@ function onAudioClick() {
   for (let index = 0; index < audioButtons.length; index++) {
     // correlate button and audio
     const button = audioButtons[index];
-    const audio = new Audio(`../static/slideReading${index}.mp3`);
+    const audio = new Audio(`static/slideReading${index}.mp3`);
 
     button.addEventListener('click', function (event) {
       // if not already playing
