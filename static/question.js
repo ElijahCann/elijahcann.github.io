@@ -24,7 +24,7 @@ function adjustFontSize(button) {
   button.style.fontSize = newFontSize + "px";
 }
 
-/**
+/** 
  * Adjust body height for mobile/tablet devices
  * iOS and Android browsers need specific viewport handling
  */
