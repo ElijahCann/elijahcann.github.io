@@ -1,0 +1,144 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#title {
+    position: relative;
+    grid-row: 1;
+    grid-column: 1 / -1;
+    background-color: #add8e6;
+    padding-bottom: 3vh;
+    padding-top: 3vh;
+    color: #f0f0f0;
+    font-size: 6vh;
+    background-image: url('/static/titleBackground.jpg');
+}
+
+.carousel-container {
+    width: auto;
+    height: min(40vh, 100vw / 2.593);
+    overflow: hidden;
+    position: relative;
+    margin: auto;
+}
+
+.carousel-container .item-container {
+    height: 100%;
+    width: auto;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    transition: 1000ms ease;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.carousel-container .item {
+    height: 100%;
+    width: auto;
+    margin: auto;
+    top: 0;
+    transition: 1000ms ease;
+}
+
+.carousel-container .inactive {
+    transform: translateX(calc(-100vw - 50%));
+    transition: none;
+}
+
+.carousel-container .becoming-active-from-right {
+    transform: translateX(calc(-100vw - 50%));
+    transition: none;
+}
+
+.carousel-container .becoming-active-from-left {
+    transform: translateX(calc(50vw));
+    transition: none;
+}
+
+.carousel-container .after {
+    transform: translateX(50vw);
+}
+
+.carousel-container .before {
+    transform: translateX(calc(-100vw - 50%));
+}
+
+.audio-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 20%;
+    z-index: 1;
+}
+
+#SWOW-link {
+    position: absolute;
+    bottom: 8%;
+    left: 53%;
+    transform: translateX(-50%);
+    height: 20%;
+    width: 45%;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.subheading {
+    font-size: 2vh;
+    color: #075767;
+}
+
+#start-exercise {
+    margin-top: 3vh;
+}
+
+#find-out-more {
+    background-color: #d1f4ff;
+}
+
+#indicator-background {
+    width: 100vw;
+    background-color: #d1f4ff;
+}
+
+.carousel-indicators {
+    margin: auto;
+    display: flex;
+    width: 60%;
+    max-width: calc(40vh * 2);
+    justify-content: space-around;
+}
+
+.carousel-indicators img {
+    height: min(12.5vh, 19vw);
+    opacity: 50%;
+    cursor: pointer;
+}
+
+.carousel-indicators .active {
+    opacity: 100%;
+    cursor: default;
+}
+
+#play-btn-container {
+    margin: auto;
+    margin-top: 2vh;
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+}
+
+.play-btn {
+    width: auto;
+    height: min(100%, 20vw);
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
