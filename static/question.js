@@ -63,7 +63,7 @@ function createNoAudioButton(audioButton, blockOthers) {
   if (!audioButton) {
     return;
   }
-  audioButton.src = "static/NoSpeaker.PNG";
+  audioButton.src = "static/NoSpeaker.png";
   let noAudio = new Audio("static/NoAudio.mp3");
   audioButton.addEventListener(
     "click",
@@ -89,7 +89,7 @@ function generateText(words) {
     console.warn("Popup speaker button not found");
   } else if (words[0]["audio"] != null) {
     play = removeAllEventListeners(play);
-    play.src = "static/speaker.PNG";
+    play.src = "static/speaker.png";
     let audio = new Audio(words[0]["audio"]);
     play.setAttribute("data-loading", "true");
     audio.addEventListener("canplay", () => {
@@ -105,7 +105,7 @@ function generateText(words) {
     });
   } else if (window.speechSynthesis) {
     play = removeAllEventListeners(play);
-    play.src = "static/speaker.PNG";
+    play.src = "static/speaker.png";
     const wordToSpeak = words[0].word;
     play.addEventListener("click", (event) => {
       event.stopPropagation();
@@ -436,7 +436,7 @@ function onSpeakerButtonClick(target, words) {
         }
         if (audioSrc != null) {
           // Dictionary audio found: set speaker icon and attach audio handler
-          audioButton.src = "static/speaker.PNG";
+          audioButton.src = "static/speaker.png";
           let audio = new Audio(audioSrc);
           audio.addEventListener("canplay", function () {
             // Audio is ready to play: remove loading state
@@ -458,7 +458,7 @@ function onSpeakerButtonClick(target, words) {
           );
         } else if (window.speechSynthesis) {
           // Fall back to speech synthesis
-          audioButton.src = "static/speaker.PNG";
+          audioButton.src = "static/speaker.png";
           audioButton.removeAttribute("data-loading");
           audioButton.style.opacity = "1";
           audioButton.style.pointerEvents = "auto";
@@ -484,7 +484,7 @@ function onSpeakerButtonClick(target, words) {
       .catch((error) => {
         // Failed: check for speech synthesis
         if (window.speechSynthesis) {
-          audioButton.src = "static/speaker.PNG";
+          audioButton.src = "static/speaker.png";
           audioButton.removeAttribute("data-loading");
           audioButton.style.opacity = "1";
           audioButton.style.pointerEvents = "auto";
@@ -554,7 +554,7 @@ function popupText(data, HTMLword) {
     if (play) {
       play = removeAllEventListeners(play);
       if (window.speechSynthesis) {
-        play.src = "static/speaker.PNG";
+        play.src = "static/speaker.png";
         play.addEventListener("click", function (event) {
           event.stopPropagation();
           event.preventDefault();
