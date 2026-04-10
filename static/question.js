@@ -643,7 +643,9 @@ async function updateQuestion() {
       container.replaceChild(newDiv, button1);
     }
     if (button2) {
-      button2.remove();
+      const container = document.getElementById("grid-container");
+      const newDiv = document.createElement("div");
+      container.replaceChild(newDiv, button2);
     }
   }
   for (let i = 1; i <= numButtons; i++) {
