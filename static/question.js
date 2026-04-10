@@ -9,8 +9,23 @@
 // ============================================================================
 
 import { getQuestionDataFromDB } from "./game.js";
-let highScore = 0;
 let currentScore = 0;
+let highScore = 0;
+
+function loadHighScore() {
+  const savedHighScore = localStorage.getItem("highScore");
+  if (savedHighScore !== null) {
+    highScore = parseInt(savedHighScore, 10);
+    document.getElementById("high-score").textContent = `Longest Run: ${highScore}`;
+  } else highScore = 0;
+}
+
+function saveHighScore() {
+  localStorage.setItem("highScore", highScore.toString());
+}
+
+window.addEventListener("beforeunload", saveHighScore);
+
 // ============================================================================
 // UTILITY: UI & SIZING
 // ============================================================================
@@ -700,6 +715,9 @@ document.addEventListener("DOMContentLoaded", async function () {
   await updateQuestion();
   mchoice();
   setupButtons();
+  loadHighScore();
+  const highScoreText = document.getElementById("high-score");
+  highScoreText.textContent = `Longest Run: ${highScore}`;
 });
 
 /**
