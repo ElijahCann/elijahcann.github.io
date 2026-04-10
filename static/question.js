@@ -9,7 +9,8 @@
 // ============================================================================
 
 import { getQuestionDataFromDB } from "./game.js";
-
+let highScore = 0;
+let currentScore = 0;
 // ============================================================================
 // UTILITY: UI & SIZING
 // ============================================================================
@@ -155,15 +156,24 @@ function hidePopup() {
  * @param {Element} button - The clicked answer button
  */
 function isAnswerCorrect(button) {
+  const highScoreText = document.getElementById("high-score");
+  const currentScoreText = document.getElementById("current-score");
   if (button.classList.contains("wrong")) {
     button.style.backgroundColor = "rgb(252, 43, 43)";
     const failAudio = new Audio("static/fail.mp3");
     failAudio.play();
+    currentScore = 0;
   } else {
     button.style.backgroundColor = "rgb(38, 213, 96)";
     const correctAudio = new Audio("static/correct.mp3");
     correctAudio.play();
+    currentScore++;
+    if (currentScore > highScore) {
+      highScore = currentScore;
+    }
   }
+  highScoreText.textContent = `High Score: ${highScore}`;
+  currentScoreText.textContent = `Score: ${currentScore}`;
 }
 
 // ============================================================================
