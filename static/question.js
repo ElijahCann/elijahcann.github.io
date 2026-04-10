@@ -643,6 +643,7 @@ async function updateQuestion() {
       container.replaceChild(newDiv, button1);
     }
     if (button2) {
+      console.warn("Button #ans4 found in easy mode - removing from DOM");
       const container = document.getElementById("grid-container");
       const newDiv = document.createElement("div");
       container.replaceChild(newDiv, button2);
