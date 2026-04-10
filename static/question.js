@@ -24,7 +24,7 @@ function adjustFontSize(button) {
   button.style.fontSize = newFontSize + "px";
 }
 
-/** 
+/**
  * Adjust body height for mobile/tablet devices
  * iOS and Android browsers need specific viewport handling
  */
@@ -99,6 +99,7 @@ function generateText(words) {
       event.stopPropagation();
       event.preventDefault();
       if (play.hasAttribute("data-loading")) {
+        event.stopPropagation(); // prevent click from propagating to popup when audio is loading
         return;
       }
       audio.play();
@@ -184,13 +185,13 @@ function mchoice() {
       // Check if any child audio or help buttons are loading
       const audioBtn = button.querySelector(`#audio${i}`);
       const helpBtn = button.querySelector(`#help${i}`);
-      if (
-        (audioBtn && audioBtn.hasAttribute("data-loading")) ||
-        (helpBtn && helpBtn.hasAttribute("data-loading"))
-      ) {
-        event.preventDefault();
-        return;
-      }
+      // if (
+      //   (audioBtn && audioBtn.hasAttribute("data-loading")) ||
+      //   (helpBtn && helpBtn.hasAttribute("data-loading"))
+      // ) {
+      //   event.preventDefault();
+      //   return;
+      // }
       if (!button.classList.contains("disabled")) {
         button.classList.add("disabled");
         isAnswerCorrect(button);
@@ -248,6 +249,7 @@ function onDictButtonClick() {
       // Don't allow clicking if already loading
       if (dictButton.hasAttribute("data-loading")) {
         event.preventDefault();
+        event.stopPropagation(); // prevent click from propagating to answer button behind
         return;
       }
       clickAudio.play().catch(() => {});
@@ -261,7 +263,6 @@ function onDictButtonClick() {
       // Mark button as loading with visual feedback
       dictButton.setAttribute("data-loading", "true");
       dictButton.style.opacity = "0.6";
-      dictButton.style.pointerEvents = "none";
       // Fetch word definition from dictionary API
       fetch(
         `https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`,
@@ -395,10 +396,13 @@ function onSpeakerButtonClick(target, words) {
     if (!audioButton) {
       continue;
     }
+    audioButton.addEventListener("click", function (event) {
+      event.stopPropagation();
+      event.preventDefault();
+    });
     // Mark button as loading with visual feedback
     audioButton.setAttribute("data-loading", "true");
     audioButton.style.opacity = "0.6";
-    audioButton.style.pointerEvents = "none";
 
     fetch(
       `https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`,
