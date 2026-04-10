@@ -172,8 +172,8 @@ function isAnswerCorrect(button) {
       highScore = currentScore;
     }
   }
-  highScoreText.textContent = `High Score: ${highScore}`;
-  currentScoreText.textContent = `Score: ${currentScore}`;
+  highScoreText.textContent = `Longest Run: ${highScore}`;
+  currentScoreText.textContent = `Current Run: ${currentScore}`;
 }
 
 // ============================================================================
