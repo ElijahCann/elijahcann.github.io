@@ -112,7 +112,6 @@ body {
 .carousel-indicators {
     margin: auto;
     display: flex;
-    width: 60%;
     max-width: calc(40vh * 2);
     justify-content: space-around;
 }
