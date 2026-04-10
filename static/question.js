@@ -637,6 +637,7 @@ async function updateQuestion() {
   if (difficulty === "easy") {
     const button1 = document.querySelector("#ans3");
     const button2 = document.querySelector("#ans4");
+    // removes buttons and replaces with empty divs to maintain grid structure without showing extra buttons
     if (button1) {
       const container = document.getElementById("grid-container");
       const newDiv = document.createElement("div");
