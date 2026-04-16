@@ -36,8 +36,10 @@ window.addEventListener("beforeunload", saveHighScore);
  */
 function adjustFontSize(button) {
   const containerWidth = window.innerWidth / 2 - 11;
-  const newFontSize = 0.1 * containerWidth;
-  button.style.fontSize = newFontSize + "px";
+  const widthFontSize = 0.1 * containerWidth;
+  const containerHeight = window.innerHeight / 2 - 11;
+  const heightFontSize = 0.1 * containerHeight;
+  button.style.fontSize = Math.min(widthFontSize, heightFontSize) + "px";
 }
 
 /**
